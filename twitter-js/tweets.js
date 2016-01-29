@@ -1,13 +1,40 @@
-var swig = require('swig');
+var _ = require('lodash');
+var data = [];
 
-var locals = {
-    title: 'An Example',
-    people: [
-        { name: 'Gandalf'},
-        { name: 'Frodo' },
-        { name: 'Hermione'}
-    ]
+function add (name, text) {
+	data.push({ name: name, text: text });
+}
+
+function list () {
+  return _.cloneDeep(data);
+}
+
+function find (properties) {
+  return _.cloneDeep(_.filter(data, properties));
+}
+
+module.exports = { add: add, list: list, find: find };
+
+
+var randArrayEl = function(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 };
-swig.renderFile(__dirname + '/views/index.html', locals, function (err, output) {
-    console.log(output);
-});
+
+var getFakeName = function() {
+  var fakeFirsts = ['Nimit', 'Dave', 'Shanna', 'Charlotte', 'Scott', 'Ayana', 'Omri', 'Gabriel', 'Joe'];
+  var fakeLasts = ['Hashington', 'Stackson', 'McQueue', 'OLogn', 'Ternary', 'Claujure', 'Dunderproto', 'Binder', 'Docsreader', 'Ecma'];
+  return randArrayEl(fakeFirsts) + " " + randArrayEl(fakeLasts);
+};
+
+var getFakeTweet = function() {
+  var awesome_adj = ['awesome', 'breathtaking', 'amazing', 'funny', 'sweet', 'cool', 'wonderful', 'mindblowing'];
+  return "Fullstack Academy is " + randArrayEl(awesome_adj) + "! The instructors are just so " + randArrayEl(awesome_adj) + ". #fullstacklove #codedreams";
+};
+
+for (var i = 0; i < 10; i++) {
+  module.exports.add( getFakeName(), getFakeTweet() );
+}
+
+console.log(data);
+
+console.log(find);

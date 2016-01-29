@@ -1,9 +1,13 @@
 var express = require('express');
 var swig = require('swig');
 var app = express();
+var routes = require('./routes/');
+
+app.use('/', routes);
 
 swig.setDefaults({ cache: false });
 
+app.use(express.static('public'));
 
 
 app.engine("html", require('swig').renderFile);
