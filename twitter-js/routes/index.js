@@ -8,5 +8,8 @@ router.get('/', function (req, res) {
   res.render( 'index', { title: 'Twitter.js', tweets: tweets } );
 });
 
+router.get('/users/:name', function(req, res) {
+	
+})
 
 module.exports = router;
