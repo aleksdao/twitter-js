@@ -13,7 +13,7 @@
       <b>Your Name</b><br>
       100 followers
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9" id="tweetList">
       <!-- display tweets here -->
       	<h1>All Tweets</h1>
 
@@ -21,8 +21,11 @@
       	  {% if showForm %}
       	  <form action="/tweets" method="POST">
       	    <label for="name_field">Name:</label>
-      	    <input name="name" type="text" id="name_field" value={{tweet.name}}/>
-
+      	    	{% if user %}
+      	    		<input name="name" type="text" id="name_field" value={{user}}/>
+      	    	{% else %}
+      	    		<input name="name" type="text" id="name_field" value= "" />
+  	    		{% endif %}
       	    <label for="text_field">Text:</label>
       	    <input name="text" type="text" id="text_field" style="width: 350px;" />
 

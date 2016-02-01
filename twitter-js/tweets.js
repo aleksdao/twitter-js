@@ -5,6 +5,7 @@ function add (name, text) {
 	// var id = 0;
 	var id = Math.floor(Math.random(0, 100000) * 100000)
 	data.push({ name: name, text: text, id: id});
+	return id;
 }
 
 function list () {
