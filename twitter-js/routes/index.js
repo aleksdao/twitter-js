@@ -42,7 +42,7 @@ module.exports = function(io) {
   	//redirect to homepage
   	io.sockets.emit('new_tweet', { name: name, text: text, id: id });
   	//redirect here so that the user posting doesn't 
-  	res.redirect('/');
+  	//res.redirect('/');
 	});
 
 	return router;

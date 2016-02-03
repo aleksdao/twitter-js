@@ -37,9 +37,9 @@
 			{% for tweet in tweets %}
 				{% include "./tweet.html" %}
 			{% endfor %}
-			<span id="new" style="display:none;">
-      {% include "./tweet.html" %}
-    	</span>
+			<div id="new" style="display:none;">
+      {% include "./tweet.html" with {tweet: {name: "NAME", text: "TWEET", id: "ID"}} %}
+    	</div>
 			</ul>
       
     </div>

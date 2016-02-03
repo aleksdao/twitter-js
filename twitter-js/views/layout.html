@@ -95,13 +95,14 @@
       //var newTweet = document.createElement("div");
       //constructing the html that'll be contained within the div
       /*newTweet.innerHTML = "<ul><b><a href=\"/users/" + tweet.name + "\">" + tweet.name + "</a></b></ul><ul><a href=\"/tweets/" + tweet.id + "\">" + tweet.text + "</ul><ul><a href=\"\">Retweet</a></ul>";*/
-      var newTweetsSpan = document.getElementById("123");
-      newTweetsSpan.innerHTML.replace("{{tweet.name}}", "tweet.name").replace("{{tweet.text}}", tweet.text);
-      newTweetsSpan.setAttribute("style", "display:none;")
-
-      /*var tweet = tweets;
-      {% include "./tweets.html" with tweets %}*/
-
+      var newTweetsDiv = document.getElementById("new");
+      console.log(newTweetsDiv.innerHTML);
+      var html = newTweetsDiv.innerHTML;
+      html = html.replace("NAME", tweet.name).replace("NAME", tweet.name).replace("ID", tweet.id).replace("TWEET", tweet.text);
+      newTweetsDiv.innerHTML = html;
+      newTweetsDiv.setAttribute("style", "display:block;")
+      console.log(newTweetsDiv.innerHTML);
+      console.log("confirm");
 
       //alert('Refreshing... check the console...');
     }); 
