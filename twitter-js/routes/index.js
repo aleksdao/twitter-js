@@ -36,11 +36,13 @@ module.exports = function(io) {
   	var text = req.body.text;
 	  //console.log(name, text);
   	var id = tweetBank.add(name, text);
-  	//res.redirect('/');
+  	
   	//we emit the new_tweet event to indicate a new tweet has been added. because socket.io 
   	//listens for new_tweet event, it then dynamically adds new tweet to page. no need for
   	//redirect to homepage
   	io.sockets.emit('new_tweet', { name: name, text: text, id: id });
+  	//redirect here so that the user posting doesn't 
+  	res.redirect('/');
 	});
 
 	return router;

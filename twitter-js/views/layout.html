@@ -91,13 +91,19 @@
     // When 'new_tweet' events are fired, do something with the packaged tweet
     socket.on('new_tweet', function (tweet) { 
       //just a quick console log to confirm client is receiving the new_tweet event. we then create a new div element that'll contain the new tweet we will be adding to the DOM. we add the html to the new tweet's div, then append it to the end of the tweetsDiv currently housing all the tweets
-      console.log(tweet.name, tweet.text);
-      var newTweet = document.createElement("div");
+      //console.log(tweet.name, tweet.text);
+      //var newTweet = document.createElement("div");
       //constructing the html that'll be contained within the div
-      newTweet.innerHTML = "<ul><b><a href=\"/users/" + tweet.name + "\">" + tweet.name + "</a></b></ul><ul><a href=\"/tweets/" + tweet.id + "\">" + tweet.text + "</ul><ul><a href=\"\">Re-tweet</a></ul>";
-      var tweetsDiv = document.getElementById("tweetList");
-      tweetsDiv.appendChild(newTweet);
-      alert('Refreshing... check the console...');
+      /*newTweet.innerHTML = "<ul><b><a href=\"/users/" + tweet.name + "\">" + tweet.name + "</a></b></ul><ul><a href=\"/tweets/" + tweet.id + "\">" + tweet.text + "</ul><ul><a href=\"\">Retweet</a></ul>";*/
+      var newTweetsSpan = document.getElementById("123");
+      newTweetsSpan.innerHTML.replace("{{tweet.name}}", "tweet.name").replace("{{tweet.text}}", tweet.text);
+      newTweetsSpan.setAttribute("style", "display:none;")
+
+      /*var tweet = tweets;
+      {% include "./tweets.html" with tweets %}*/
+
+
+      //alert('Refreshing... check the console...');
     }); 
   </script>
 </html>

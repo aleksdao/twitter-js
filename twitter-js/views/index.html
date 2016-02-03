@@ -22,7 +22,7 @@
       	  <form action="/tweets" method="POST">
       	    <label for="name_field">Name:</label>
       	    	{% if user %}
-      	    		<input name="name" type="text" id="name_field" value={{user}}/>
+      	    		<input name="name" type="text" id="name_field" value="{{user}}"/>
       	    	{% else %}
       	    		<input name="name" type="text" id="name_field" value= "" />
   	    		{% endif %}
@@ -33,11 +33,14 @@
       	  </form>
       		{% endif %}
       <br>
-      {% for tweet in tweets %}
-        <ul><b><a href="/users/{{tweet.name}}">{{tweet.name}}</a></b></ul>
-        <ul><a href="/tweets/{{tweet.id}}">{{tweet.text}}</ul>
-        <ul><a href="">Re-tweet</a></ul>
-      {% endfor %}
+      <ul style="list-style: none;">
+			{% for tweet in tweets %}
+				{% include "./tweet.html" %}
+			{% endfor %}
+			<span id="new" style="display:none;">
+      {% include "./tweet.html" %}
+    	</span>
+			</ul>
       
     </div>
   </div>
